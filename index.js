@@ -76,11 +76,11 @@ zipCode.addEventListener("input", () => {
 function showZipCodeError() {
 if (zipCode.validity.valueMissing) {
     zipCodeError.textContent = "Enter a zip code.";
-} else if (zipCode.validity.typeMismatch) {
+} else if (zipCode.validity.patternMismatch) {
     zipCodeError.textContent = "Entered value needs to be a number.";
 } else if (zipCode.validity.tooShort) {
-    zipCodeError.textContent = `"Zip-code should be at least ${zipCode.minLength} characters; you entered ${ zipCode.value.length }."`;
-} 
+    zipCodeError.textContent = "Zip-code must be 6 digits"
+}
 zipCodeError.className = "error active";
 
 }
@@ -102,10 +102,8 @@ password.addEventListener("input", () => {
 function showPasswordError() {
     if (password.validity.valueMissing) {
         passwordError.textContent = "Enter a password.";
-    } else if (password.validity.tooShort) {
-        passwordError.textContent = `"Password should be at least ${password.minLength} characters; you entered ${ password.value.length }."`;
-    } else if (password.validity.typeMismatch) {
-        passwordError.textContent = "Entered value needs to be a password";
+    } else if (password.validity.patternMismatch) {
+        passwordError.textContent = "Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters";
     }
    passwordError.className = "error active";
 }
@@ -155,5 +153,11 @@ form.addEventListener("submit", (e) => {
         confirmPasswordError.textContent = "Enter the confirmed password.";
         e.preventDefault();
     } 
+
+    else {
+        alert("Well done, the form was submitted succesfully!")
+    }
     
 })
+
+// Well in that case you can make it an input type = text, and try using the pattern attribute and use a regex expression to make sure that it is 6 digits, and to see if it doesn't match the pattern you can use the patternMismatch from the constraint validation api.

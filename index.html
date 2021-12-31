@@ -28,7 +28,7 @@
         <p>
             <label for="zip-code">
               <span>Zip Code</span>
-              <input type="text" id="zip-code" name="zip-code" class="form-inputs" required minlength="5" maxlength="5">
+              <input type="text" id="zip-code" name="zip-code" class="form-inputs" required pattern="[0-9]+" minlength="6" maxlength="6">
               <span class="error" aria-live="polite"></span>
             </label>
         </p>
@@ -36,7 +36,7 @@
         <p>
             <label for="password">
               <span>Password</span>
-              <input type="password" id="password" name="password" class="form-inputs" required minlength="8" maxlength="15">
+              <input type="password" id="password" name="password" class="form-inputs" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
               <span class="error" aria-live="polite"></span>
             </label>
         </p>
